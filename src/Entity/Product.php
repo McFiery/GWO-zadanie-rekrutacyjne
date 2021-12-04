@@ -8,6 +8,7 @@
 class Product
 {
     private $id;
+    private $name;
     private $unitPrice;
     private $minimumQuantity = 1;
 
@@ -27,6 +28,25 @@ class Product
     public function getId(): int
     {
         return $this->id;
+    }
+
+  /**
+   * @param string $name
+   * @return Product
+   */
+    public function setName(string $name): Product
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+  /**
+   * @return string
+   */
+    public function getName():string
+    {
+        return $this->name;
     }
 
     /**
