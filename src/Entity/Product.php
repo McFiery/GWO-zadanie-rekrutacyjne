@@ -1,4 +1,5 @@
 <?php
+
   namespace Recruitment\Entity;
 
   use InvalidArgumentException;
@@ -10,30 +11,29 @@ class Product
     private $unitPrice;
     private $minimumQuantity = 1;
 
-  /**
-   * @param int $id
-   * @return Product
-   */
+    /**
+     * @param int $id
+     * @return Product
+     */
     public function setId(int $id): Product
     {
         $this->id = $id;
         return $this;
     }
 
-  /**
-   * @return int
-   */
-    public function getId():int
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-
-  /**
-   * @param int $unitPrice
-   * @return Product
-   * @throws InvalidUnitPriceException
-   */
+    /**
+     * @param int $unitPrice
+     * @return Product
+     * @throws InvalidUnitPriceException
+     */
     public function setUnitPrice(int $unitPrice): Product
     {
         if ($unitPrice > 0) {
@@ -44,15 +44,15 @@ class Product
         return $this;
     }
 
-    public function getUnitPrice():int
+    public function getUnitPrice(): int
     {
         return $this->unitPrice;
     }
 
-  /**
-   * @param int $minimumQuantity
-   * @return Product
-   */
+    /**
+     * @param int $minimumQuantity
+     * @return Product
+     */
     public function setMinimumQuantity(int $minimumQuantity): Product
     {
         $productMinimumQuantity = $this->getMinimumQuantity();
@@ -64,7 +64,7 @@ class Product
         return $this;
     }
 
-    public function getMinimumQuantity():int
+    public function getMinimumQuantity(): int
     {
         return $this->minimumQuantity;
     }

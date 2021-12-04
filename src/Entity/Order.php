@@ -2,12 +2,12 @@
 
   namespace Recruitment\Entity;
 
-use Recruitment\Cart\Cart;
+  use Recruitment\Cart\Cart;
 
 class Order
 {
     private $orderId;
-    private $orderItems = [];
+    private $orderItems;
     private $totalPrice;
 
     public function __construct(int $orderId, Cart $cart)
@@ -17,7 +17,7 @@ class Order
         $this->totalPrice = $cart->getTotalPrice();
     }
 
-    public function getDataForView():array
+    public function getDataForView(): array
     {
         $view = [];
 

@@ -2,19 +2,19 @@
 
   namespace Recruitment\Cart;
 
-use InvalidArgumentException;
-use Recruitment\Cart\Exception\QuantityTooLowException;
-use Recruitment\Entity\Product;
+  use InvalidArgumentException;
+  use Recruitment\Cart\Exception\QuantityTooLowException;
+  use Recruitment\Entity\Product;
 
 class Item
 {
     private $product;
     private $quantity;
 
-  /**
-   * @param Product $product
-   * @param int $quantity
-   */
+    /**
+     * @param Product $product
+     * @param int $quantity
+     */
     public function __construct(Product $product, int $quantity)
     {
         $this->product = $product;
@@ -25,15 +25,15 @@ class Item
         }
     }
 
-    public function getProduct():Product
+    public function getProduct(): Product
     {
         return $this->product;
     }
 
-  /**
-   * @throws QuantityTooLowException
-   */
-    public function setQuantity(int $quantity):Product
+    /**
+     * @throws QuantityTooLowException
+     */
+    public function setQuantity(int $quantity): Product
     {
         $ProductMinimumQuantity = $this->product->getMinimumQuantity();
         if ($quantity >= $ProductMinimumQuantity) {
@@ -44,17 +44,17 @@ class Item
         return $this->product;
     }
 
-    public function getQuantity():int
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    public function getTotalPrice():int
+    public function getTotalPrice(): int
     {
         return $this->calculateTotalPrice();
     }
 
-    public function calculateTotalPrice():int
+    public function calculateTotalPrice(): int
     {
         $productPrice = $this->product->getUnitPrice();
         return $productPrice * $this->quantity;
