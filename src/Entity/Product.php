@@ -3,6 +3,7 @@
   namespace Recruitment\Entity;
 
   use InvalidArgumentException;
+  use Recruitment\Entity\Exception\InvalidTaxValue;
   use Recruitment\Entity\Exception\InvalidUnitPriceException;
 
 class Product
@@ -11,6 +12,9 @@ class Product
     private $name;
     private $unitPrice;
     private $minimumQuantity = 1;
+    private $tax = 0;
+
+    private $acceptedTax = [0,5,8,23];
 
     /**
      * @param int $id
@@ -87,5 +91,29 @@ class Product
     public function getMinimumQuantity(): int
     {
         return $this->minimumQuantity;
+    }
+
+  /**
+   * @return int
+   */
+    public function getTax(): int
+    {
+        return $this->tax;
+    }
+
+  /**
+   * @param int $tax
+   * @return Product
+   * @throws InvalidTaxValue
+   */
+    public function setTax(int $tax): Product
+    {
+        if (in_array($tax, $this->acceptedTax)) {
+            $this->tax = $tax;
+        } else {
+            throw new InvalidTaxValue();
+        }
+
+        return $this;
     }
 }
