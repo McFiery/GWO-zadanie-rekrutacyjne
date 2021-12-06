@@ -27,7 +27,7 @@ class Order
         foreach ($this->orderItems as $item) {
             $viewItem['id'] = $item->getProduct()->getId();
             $viewItem['quantity'] = $item->getQuantity();
-            $viewItem['tax'] = $item->getProduct()->getTax();
+            $viewItem['tax'] = $item->getProduct()->getTax().'%';
             $viewItem['total_price'] = $item->getTotalPrice();
             $viewItem['total_gross_price'] = $item->getTotalPriceGross();
 
