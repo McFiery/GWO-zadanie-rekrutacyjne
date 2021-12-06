@@ -114,4 +114,18 @@ class Cart
         $this->items = [];
         return $order;
     }
+
+    public function getTotalPriceGross(): int
+    {
+        return $this->calculateTotalPriceGross();
+    }
+
+    private function calculateTotalPriceGross(): int
+    {
+        $totalPriceGross = 0;
+        foreach ($this->items as $item) {
+            $totalPriceGross += $item->getTotalPriceGross();
+        }
+        return $totalPriceGross;
+    }
 }

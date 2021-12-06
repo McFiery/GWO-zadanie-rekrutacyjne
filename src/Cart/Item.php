@@ -59,4 +59,17 @@ class Item
         $productPrice = $this->product->getUnitPrice();
         return $productPrice * $this->quantity;
     }
+
+    public function getTotalPriceGross(): int
+    {
+        return $this->calculateTotalPriceGross();
+    }
+
+    private function calculateTotalPriceGross(): int
+    {
+        $totalPrice = $this->calculateTotalPrice();
+        $taxValue=($totalPrice*$this->product->getTax())/100;
+
+        return $totalPrice+$taxValue;
+    }
 }

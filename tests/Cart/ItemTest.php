@@ -46,4 +46,21 @@ class ItemTest extends TestCase
         $item = new Item($product, 10);
         $item->setQuantity(9);
     }
+
+  /**
+   * @test
+   */
+    public function checkingTheTotalPriceGrossValueIsCorrect(): void
+    {
+        $product = (new Product())->setUnitPrice(10000);
+
+        $item = new Item($product, 10);
+
+        $this->assertEquals($product, $item->getProduct());
+        $this->assertEquals(10, $item->getQuantity());
+        $this->assertEquals(100000, $item->getTotalPrice());
+        $product->setTax(23);
+
+        $this->assertEquals(123000, $item->getTotalPriceGross());
+    }
 }

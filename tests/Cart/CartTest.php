@@ -114,6 +114,18 @@ class CartTest extends TestCase
         $this->assertCount(1, $cart->getItems());
     }
 
+  /**
+   * @test
+   */
+    public function checkingTheTotalPriceGrossValueIsCorrectInCart(): void
+    {
+        $cart = new Cart();
+        $cart->addProduct($this->buildTestProduct(1, 10000)->setTax(23));
+        $cart->addProduct($this->buildTestProduct(1, 10000)->setTax(8));
+
+        $this->assertEquals(23100, $cart->getTotalPriceGross());
+    }
+
     /**
      * @test
      */
